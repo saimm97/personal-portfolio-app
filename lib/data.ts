@@ -8,11 +8,11 @@ import {
   Database,
   BadgeDollarSign,
   Boxes,
+  HeartPulse,
   Github,
   Linkedin,
   Mail,
   Phone,
-  FileText,
   GraduationCap,
 } from "lucide-react";
 
@@ -20,9 +20,9 @@ export const profile = {
   name: "Saim Malik",
   title: "Senior Full Stack Engineer",
   tagline:
-    "Senior Full Stack Engineer with 6+ years building scalable SaaS platforms and AI-powered applications in Python (Django/FastAPI) and React/Next.js — including an auditing platform that uncovered $40M+ in revenue leakage.",
+    "Senior Full Stack Engineer with 6+ years shipping investor-ready SaaS and AI products across Python (Django/FastAPI), React/Next.js, Ruby on Rails, and Laravel — from classical ML to LLM- and deep learning-powered models in production. Trusted technical lead for multiple startups through launch and successful fundraising; flagship build: an auditing platform that uncovered $20M+ in revenue leakage. Strong product sense — discovery, roadmaps, and tight collaboration with design and GTM.",
   shortBio:
-    "I'm Saim Malik, a Senior Full Stack Engineer based in Lahore, Pakistan. I lead engineering teams and ship end-to-end product features — from distributed backends and large-scale data pipelines to intelligent search, automation, and AI assistants. My focus is performance, scalability, and production reliability.",
+    "I'm Saim Malik, a Senior Full Stack Engineer based in Lahore, Pakistan. I partner with startups as a hands-on lead — aligning architecture, velocity, and quality so teams can earn investor confidence and scale after the round. I bring product experience alongside engineering: clarifying outcomes with PMs and stakeholders, shaping roadmaps, partnering on UX iteration, and shipping measurable impact — not just tickets. I ship end-to-end across Django, FastAPI, Laravel, Rails, and React/Next.js, and I put machine learning, LLMs, and deep learning to work where it moves the needle: search, automation, auditing, and intelligent workflows. Performance, reliability, and production discipline are non-negotiable.",
   location: "Lahore, Pakistan",
   yearsOfExperience: 6,
   email: "saimmalik8397@gmail.com",
@@ -48,12 +48,16 @@ export const navLinks = [
 
 export const stats: { label: string; value: string }[] = [
   { label: "Years of Experience", value: "6+" },
-  { label: "Engineers Led", value: "15+" },
-  { label: "Data Sources Integrated", value: "100+" },
-  { label: "Revenue Uncovered", value: "$40M+" },
+  { label: "Engineers Led", value: "8+" },
+  { label: "Projects worked on", value: "12+" },
+  {
+    label: "Projects taken through to investment",
+    value: "5+",
+  },
 ];
 
 export type Industry = {
+  id: string;
   name: string;
   description: string;
   icon: LucideIcon;
@@ -62,6 +66,7 @@ export type Industry = {
 
 export const industries: Industry[] = [
   {
+    id: "ai-ml",
     name: "AI & Machine Learning",
     icon: Brain,
     description:
@@ -69,6 +74,7 @@ export const industries: Industry[] = [
     highlights: ["LLMs & OpenAI API", "RAG & intelligent search", "AI assistants & automation"],
   },
   {
+    id: "multi-tenant-saas",
     name: "Multi-Tenant SaaS",
     icon: Layers,
     description:
@@ -76,6 +82,7 @@ export const industries: Industry[] = [
     highlights: ["Multi-tenant RBAC", "Distributed services", "High-concurrency APIs"],
   },
   {
+    id: "ecommerce",
     name: "E-commerce & Marketplaces",
     icon: ShoppingBag,
     description:
@@ -83,6 +90,7 @@ export const industries: Industry[] = [
     highlights: ["ML recommendations", "Elasticsearch search", "Stripe payments & fraud detection"],
   },
   {
+    id: "proptech",
     name: "Real Estate (PropTech)",
     icon: Building2,
     description:
@@ -90,6 +98,7 @@ export const industries: Industry[] = [
     highlights: ["MLS & public data feeds", "Snowflake warehousing", "ETL at scale"],
   },
   {
+    id: "translation-nlp",
     name: "Enterprise Translation & NLP",
     icon: Languages,
     description:
@@ -97,6 +106,7 @@ export const industries: Industry[] = [
     highlights: ["NLP pipelines", "70+ file formats", "25+ MT engines"],
   },
   {
+    id: "data-engineering",
     name: "Data Engineering & Analytics",
     icon: Database,
     description:
@@ -104,13 +114,23 @@ export const industries: Industry[] = [
     highlights: ["ETL at scale", "Celery + Redis", "Real-time dashboards"],
   },
   {
+    id: "healthcare",
+    name: "Healthcare",
+    icon: HeartPulse,
+    description:
+      "Delivered HIPAA-aware workflows, clinical operations tooling, and analytics layers for providers and health-tech teams — with the same rigor applied to security, auditability, and reliability as high-stakes SaaS.",
+    highlights: ["HIPAA-minded design", "Clinical & ops workflows", "Secure analytics & integrations"],
+  },
+  {
+    id: "revenue-audit",
     name: "Revenue & Audit Intelligence",
     icon: BadgeDollarSign,
     description:
       "Built AI auditing engines using fuzzy matching and ML heuristics to recover missed commissions and revenue leakage.",
-    highlights: ["$40M+ uncovered", "Fuzzy matching", "Heuristic ML"],
+    highlights: ["$20M+ uncovered", "Fuzzy matching", "Heuristic ML"],
   },
   {
+    id: "devops-platform",
     name: "DevOps & Platform",
     icon: Boxes,
     description:
@@ -259,16 +279,41 @@ export type Project = {
   impact: string[];
   stack: string[];
   link?: string;
+  /** Matches `Industry.id` — a project may span multiple verticals. */
+  industryIds: string[];
 };
 
 export const projects: Project[] = [
   {
+    name: "AI-Powered E-Commerce Marketplace",
+    category: "E-commerce · AI / ML",
+    description:
+      "AI-driven marketplace with a TensorFlow recommendation engine, LLM-style NLP for product search and customer interactions, Elasticsearch search, fraud detection, and Stripe-based payments.",
+    impact: [
+      "ML recommendation engine in production",
+      "Elasticsearch-powered intelligent search",
+      "Stripe payments with ML fraud detection",
+    ],
+    stack: [
+      "Django",
+      "Ruby on Rails",
+      "ReactJS",
+      "TensorFlow",
+      "Elasticsearch",
+      "AWS",
+      "Redis",
+      "Stripe API",
+      "Microservices",
+    ],
+    industryIds: ["ecommerce", "ai-ml", "multi-tenant-saas"],
+  },
+  {
     name: "MLSIngestion Pro",
     category: "Real Estate · Data Engineering · AI Audit",
     description:
-      "Distributed microservices platform ingesting 100+ MLS feeds and public datasets into Snowflake, with an AI-driven auditing engine that uncovered $40M+ in missed commissions over 10+ years of transactions.",
+      "Distributed microservices platform ingesting 100+ MLS feeds and public datasets into Snowflake, with an AI-driven auditing engine that uncovered $20M+ in missed commissions over 10+ years of transactions.",
     impact: [
-      "$40M+ missed commissions uncovered",
+      "$20M+ missed commissions uncovered",
       "100+ data feeds ingested into Snowflake",
       "Millions of records processed in ETL",
     ],
@@ -284,6 +329,14 @@ export const projects: Project[] = [
       "Celery",
       "Docker",
       "Microservices",
+    ],
+    industryIds: [
+      "proptech",
+      "data-engineering",
+      "revenue-audit",
+      "ai-ml",
+      "multi-tenant-saas",
+      "devops-platform",
     ],
   },
   {
@@ -306,30 +359,107 @@ export const projects: Project[] = [
       "AWS",
       "Microservices",
     ],
+    industryIds: ["translation-nlp", "ai-ml", "multi-tenant-saas"],
+    link: "https://marshub.com",
   },
   {
-    name: "AI-Powered E-Commerce Marketplace",
-    category: "E-commerce · AI / ML",
+    name: "Marstranslation",
+    category: "Localization · Translation · SaaS",
     description:
-      "AI-driven marketplace with a TensorFlow recommendation engine, LLM-style NLP for product search and customer interactions, Elasticsearch search, fraud detection, and Stripe-based payments.",
+      "Marstranslation is a global localization and translation platform serving 100+ languages — including software localization, website localization, and neural machine translation. Large enterprises rely on it for end-to-end translation workflows, while an open bidding model lets vendors compete on client projects for strong quality and pricing.",
     impact: [
-      "ML recommendation engine in production",
-      "Elasticsearch-powered intelligent search",
-      "Stripe payments with ML fraud detection",
+      "100+ languages with software & website localization",
+      "25+ machine translation engines integrated",
+      "Open bidding marketplace for clients and vendors",
     ],
     stack: [
-      "Django",
+      "Ruby on Rails 6",
+      "React.js",
+      "Neural MT",
+      "PostgreSQL",
+      "REST APIs",
+    ],
+    industryIds: ["translation-nlp", "multi-tenant-saas", "ai-ml"],
+    link: "https://marstranslation.com",
+  },
+  {
+    name: "StackShare",
+    category: "Developer Community · Full-Stack",
+    description:
+      "Community platform where engineers discover, compare, and discuss tech stacks used by companies. Owned backend performance and Rails upgrades, shipped React + Redux front ends for new modules, and ran production deploys through Jenkins and Kubernetes.",
+    impact: [
+      "Migrated platform to Rails 7 and Ruby 3",
+      "Shipped new modules with React and Redux",
+      "Jenkins pipelines and Kubernetes deployments",
+    ],
+    stack: [
       "Ruby on Rails",
       "ReactJS",
-      "TensorFlow",
-      "Elasticsearch",
-      "AWS",
-      "Redis",
-      "Stripe API",
-      "Microservices",
+      "Redux",
+      "PostgreSQL",
+      "Jenkins",
+      "Kubernetes",
     ],
+    industryIds: ["multi-tenant-saas", "devops-platform"],
+    link: "https://stackshare.io",
+  },
+  {
+    name: "BlueCollor Portal",
+    category: "HR Tech · Localization · ML",
+    description:
+      "Web platform for global localization and translation services combining a job marketplace for seekers and employers with real-time messaging, dashboards, and optional premium listings. Rails and PostgreSQL core on Heroku, with Django and Celery pipelines for profile enrichment, ML matching, and spam detection.",
+    impact: [
+      "Real-time messaging and personalized dashboards",
+      "ML job–candidate matching and resume parsing",
+      "Secure auth with Devise and JWT",
+    ],
+    stack: [
+      "Ruby on Rails",
+      "React.js",
+      "PostgreSQL",
+      "Django",
+      "Python",
+      "Celery",
+      "Redis",
+      "Heroku",
+      "Devise",
+      "JWT",
+    ],
+    industryIds: ["translation-nlp", "multi-tenant-saas", "ai-ml"],
+  },
+  {
+    name: "Clinical Operations & Care Pathway Platform",
+    category: "Healthcare · Multi-Tenant SaaS · AI",
+    description:
+      "Multi-tenant SaaS for clinics and regional health networks: referral intake, care-pathway tracking, and operations analytics — with HIPAA-minded access control, audit trails, and ML-assisted prioritization so teams spend time on patients, not spreadsheets. Built in the same full-stack pattern as other investor-grade products: Python (Django/FastAPI), React/Next.js, PostgreSQL, and production-hardened APIs.",
+    impact: [
+      "Role-based access and audit-friendly event history",
+      "ML-assisted queue prioritization and SLA visibility",
+      "End-to-end Django/FastAPI + React/Next.js delivery",
+    ],
+    stack: [
+      "Python",
+      "Django",
+      "FastAPI",
+      "Next.js",
+      "React",
+      "PostgreSQL",
+      "Redis",
+      "AWS",
+      "Docker",
+    ],
+    industryIds: ["healthcare", "multi-tenant-saas", "ai-ml", "data-engineering"],
   },
 ];
+
+export function projectsByIndustry(industryId: string | null): Project[] {
+  if (!industryId) return projects;
+  return projects.filter((p) => p.industryIds.includes(industryId));
+}
+
+export function projectCountForIndustry(industryId: string): number {
+  return projects.filter((p) => p.industryIds.includes(industryId)).length;
+}
 
 export type SkillGroup = { title: string; items: string[] };
 
@@ -352,6 +482,16 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend Frameworks",
     items: ["ReactJS", "Next.js", "Redux", "Vue.js", "HTML5", "Tailwind CSS"],
+  },
+  {
+    title: "Product & experience",
+    items: [
+      "Discovery, roadmaps & prioritization",
+      "PRDs, user stories & acceptance criteria",
+      "Stakeholder alignment (PM, design, GTM)",
+      "UX collaboration & iterative delivery",
+      "Funnels, analytics & outcome metrics",
+    ],
   },
   {
     title: "AI & Machine Learning",
@@ -443,9 +583,9 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
   {
-    value: "$40M+",
+    value: "$20M+",
     label: "Revenue uncovered",
-    description: "Built an AI auditing engine that found $40M+ in missed commissions across 10+ years of MLS transactions.",
+    description: "Built an AI auditing engine that found $20M+ in missed commissions across 10+ years of MLS transactions.",
   },
   {
     value: "100+",
@@ -492,7 +632,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Working with Saim was a turning point. His AI auditing engine surfaced $40M+ we didn't know we were missing. He doesn't just write code — he uncovers business value.",
+      "Working with Saim was a turning point. His AI auditing engine surfaced $20M+ we didn't know we were missing. He doesn't just write code — he uncovers business value.",
     name: "Product Owner",
     role: "Product Leadership",
     company: "JWS Software Group",
@@ -510,7 +650,7 @@ export const principles: { title: string; description: string }[] = [
   {
     title: "Outcomes over output",
     description:
-      "I align engineering work to measurable business outcomes — uncovering $40M+ in revenue, reducing defects by 75%, and shaving release cycles by 30%.",
+      "I align engineering work to measurable business outcomes — uncovering $20M+ in revenue, reducing defects by 75%, and shaving release cycles by 30%.",
   },
   {
     title: "Pragmatic architecture",

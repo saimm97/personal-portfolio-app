@@ -1,43 +1,33 @@
 "use client";
 
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
+import { useState, type FormEvent } from "react";
 import { ArrowRight, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
 
 const INITIAL: ContactState | null = null;
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="group inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
-    >
-      {pending ? (
-        <>
-          <Loader2 size={16} className="animate-spin" />
-          Sending…
-        </>
-      ) : (
-        <>
-          Send message
-          <ArrowRight
-            size={16}
-            className="transition group-hover:translate-x-1"
-          />
-        </>
-      )}
-    </button>
-  );
-}
-
 export function ContactForm() {
-  const [state, action] = useActionState(submitContact, INITIAL);
+  const [state, setState] = useState<ContactState | null>(INITIAL);
+  const [isPending, setIsPending] = useState(false);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    setIsPending(true);
+    try {
+      const next = await submitContact(state, formData);
+      setState(next);
+      if (next.ok) {
+        form.reset();
+      }
+    } finally {
+      setIsPending(false);
+    }
+  }
 
   return (
-    <form action={action} className="space-y-4" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label
@@ -127,7 +117,26 @@ export function ContactForm() {
             I usually reply within 1–2 business days.
           </span>
         )}
-        <SubmitButton />
+        <button
+          type="submit"
+          disabled={isPending}
+          className="group inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-70"
+        >
+          {isPending ? (
+            <>
+              <Loader2 size={16} className="animate-spin" />
+              Sending…
+            </>
+          ) : (
+            <>
+              Send message
+              <ArrowRight
+                size={16}
+                className="transition group-hover:translate-x-1"
+              />
+            </>
+          )}
+        </button>
       </div>
     </form>
   );

@@ -12,11 +12,20 @@ export function ThemeToggle() {
 
   const isDark = resolvedTheme === "dark";
 
+  // Until mounted, `resolvedTheme` can differ between server and client — keep
+  // aria attributes stable so hydration matches (next-themes resolves after paint).
+  const ariaLabel = mounted
+    ? isDark
+      ? "Switch to light mode"
+      : "Switch to dark mode"
+    : "Toggle color theme";
+  const ariaPressed = mounted ? isDark : false;
+
   return (
     <button
       type="button"
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      aria-pressed={isDark}
+      aria-label={ariaLabel}
+      aria-pressed={ariaPressed}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="grid h-10 w-10 place-items-center rounded-md border border-border/70 bg-card/60 text-foreground transition hover:border-primary/60 hover:text-primary"
     >
