@@ -1,0 +1,140 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { navLinks, profile } from "@/lib/data";
+import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
+
+export function Navigation() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        scrolled
+          ? "border-b border-border/60 bg-background/70 backdrop-blur-xl"
+          : "border-b border-transparent",
+      )}
+    >
+      <nav className="container flex h-16 items-center justify-between">
+        <Link
+          href="#top"
+          aria-label={`${profile.name} — home`}
+          className="group flex items-center gap-2 font-display font-semibold tracking-tight"
+        >
+          <span className="relative grid h-8 w-8 shrink-0 place-items-center overflow-hidden rounded-md border border-border/70 bg-card/70 font-mono text-sm text-primary shadow-sm transition group-hover:border-primary/60">
+            {profile.avatarUrl ? (
+              <Image
+                src={profile.avatarUrl}
+                alt={profile.name}
+                width={32}
+                height={32}
+                priority
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              profile.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")
+                .slice(0, 2)
+                .toUpperCase()
+            )}
+          </span>
+          <span className="hidden sm:inline">{profile.name}</span>
+        </Link>
+
+        <ul className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="rounded-md px-3 py-2 text-sm text-muted-foreground transition hover:bg-card/70 hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Link
+            href="#contact"
+            className="hidden rounded-md border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition hover:border-primary hover:bg-primary/20 md:inline-flex"
+          >
+            Get in touch
+          </Link>
+          <button
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-10 w-10 place-items-center rounded-md border border-border/70 bg-card/60 text-foreground transition hover:border-primary/60 md:hidden"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      <div
+        className={cn(
+          "md:hidden",
+          open
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0",
+          "transition-opacity duration-200",
+        )}
+      >
+        <div className="container border-t border-border/60 bg-background/95 py-4 backdrop-blur-xl">
+          <ul className="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-md px-3 py-2 text-base text-muted-foreground hover:bg-card/70 hover:text-foreground"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+            <li className="pt-2">
+              <Link
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="block rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-center text-sm font-medium text-primary"
+              >
+                Get in touch
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  );
+}
