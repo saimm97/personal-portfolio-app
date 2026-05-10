@@ -50,6 +50,8 @@ export const metadata: Metadata = {
     "RAG",
     "Microservices",
     "Lahore, Pakistan",
+    "Healthcare",
+    "HIPAA",
   ],
   authors: [{ name: profile.name, url: SITE_URL }],
   creator: profile.name,

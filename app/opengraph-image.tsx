@@ -117,8 +117,9 @@ export default function OpengraphImage() {
               display: "flex",
             }}
           >
-            6+ years building scalable SaaS platforms and AI-powered apps with
-            Python (Django/FastAPI), Ruby on Rails, and Next.js — on AWS.
+            {profile.tagline.length > 200
+              ? `${profile.tagline.slice(0, 197)}…`
+              : profile.tagline}
           </div>
         </div>
 

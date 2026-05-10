@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { Section, fadeUp } from "@/components/section";
-import { industries } from "@/lib/data";
+import { industries, projectCountForIndustry } from "@/lib/data";
 
 export function Industries() {
   return (
@@ -19,15 +21,16 @@ export function Industries() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {industries.map((industry, i) => {
           const Icon = industry.icon;
+          const projectCount = projectCountForIndustry(industry.id);
           return (
             <motion.div
-              key={industry.name}
+              key={industry.id}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ delay: (i % 4) * 0.05 }}
-              className="group relative overflow-hidden rounded-xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/40 hover:bg-card/60"
+              className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/40 hover:bg-card/60"
             >
               <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 transition group-hover:opacity-100" />
               <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/60 bg-background/60 text-primary transition group-hover:border-primary/40 group-hover:text-primary">
@@ -36,7 +39,7 @@ export function Industries() {
               <h3 className="mt-4 font-display text-lg font-semibold">
                 {industry.name}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {industry.description}
               </p>
               <ul className="mt-4 space-y-1.5">
@@ -50,6 +53,24 @@ export function Industries() {
                   </li>
                 ))}
               </ul>
+              {projectCount > 0 ? (
+                <Link
+                  href={`/?industry=${industry.id}#projects`}
+                  scroll
+                  className="mt-5 inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-primary transition hover:gap-2"
+                >
+                  View projects
+                  <ArrowRight size={14} />
+                  <span className="sr-only">
+                    {" "}
+                    for {industry.name} ({projectCount})
+                  </span>
+                </Link>
+              ) : (
+                <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                  Projects coming soon
+                </p>
+              )}
             </motion.div>
           );
         })}
