@@ -20,9 +20,9 @@ export const profile = {
   name: "Saim Malik",
   title: "Senior Full Stack Engineer",
   tagline:
-    "Senior Full Stack Engineer with 6+ years shipping investor-ready SaaS and AI products across Python (Django/FastAPI), React/Next.js, Ruby on Rails, and Laravel — from classical ML to LLM- and deep learning-powered models in production. Trusted technical lead for multiple startups through launch and successful fundraising; flagship build: an auditing platform that uncovered $40M+ in revenue leakage.",
+    "Senior Full Stack Engineer with 6+ years shipping investor-ready SaaS and AI products across Python (Django/FastAPI), React/Next.js, Ruby on Rails, and Laravel — from classical ML to LLM- and deep learning-powered models in production. Trusted technical lead for multiple startups through launch and successful fundraising; flagship build: an auditing platform that uncovered $20M+ in revenue leakage. Strong product sense — discovery, roadmaps, and tight collaboration with design and GTM.",
   shortBio:
-    "I'm Saim Malik, a Senior Full Stack Engineer based in Lahore, Pakistan. I partner with startups as a hands-on lead — aligning architecture, velocity, and quality so teams can earn investor confidence and scale after the round. I ship end-to-end across Django, FastAPI, Laravel, Rails, and React/Next.js, and I put machine learning, LLMs, and deep learning to work where it moves the needle: search, automation, auditing, and intelligent workflows. Performance, reliability, and production discipline are non-negotiable.",
+    "I'm Saim Malik, a Senior Full Stack Engineer based in Lahore, Pakistan. I partner with startups as a hands-on lead — aligning architecture, velocity, and quality so teams can earn investor confidence and scale after the round. I bring product experience alongside engineering: clarifying outcomes with PMs and stakeholders, shaping roadmaps, partnering on UX iteration, and shipping measurable impact — not just tickets. I ship end-to-end across Django, FastAPI, Laravel, Rails, and React/Next.js, and I put machine learning, LLMs, and deep learning to work where it moves the needle: search, automation, auditing, and intelligent workflows. Performance, reliability, and production discipline are non-negotiable.",
   location: "Lahore, Pakistan",
   yearsOfExperience: 6,
   email: "saimmalik8397@gmail.com",
@@ -48,9 +48,12 @@ export const navLinks = [
 
 export const stats: { label: string; value: string }[] = [
   { label: "Years of Experience", value: "6+" },
-  { label: "Engineers Led", value: "15+" },
-  { label: "Data Sources Integrated", value: "100+" },
-  { label: "Revenue Uncovered", value: "$40M+" },
+  { label: "Engineers Led", value: "8+" },
+  { label: "Projects worked on", value: "12+" },
+  {
+    label: "Projects taken through to investment",
+    value: "5+",
+  },
 ];
 
 export type Industry = {
@@ -124,7 +127,7 @@ export const industries: Industry[] = [
     icon: BadgeDollarSign,
     description:
       "Built AI auditing engines using fuzzy matching and ML heuristics to recover missed commissions and revenue leakage.",
-    highlights: ["$40M+ uncovered", "Fuzzy matching", "Heuristic ML"],
+    highlights: ["$20M+ uncovered", "Fuzzy matching", "Heuristic ML"],
   },
   {
     id: "devops-platform",
@@ -308,9 +311,9 @@ export const projects: Project[] = [
     name: "MLSIngestion Pro",
     category: "Real Estate · Data Engineering · AI Audit",
     description:
-      "Distributed microservices platform ingesting 100+ MLS feeds and public datasets into Snowflake, with an AI-driven auditing engine that uncovered $40M+ in missed commissions over 10+ years of transactions.",
+      "Distributed microservices platform ingesting 100+ MLS feeds and public datasets into Snowflake, with an AI-driven auditing engine that uncovered $20M+ in missed commissions over 10+ years of transactions.",
     impact: [
-      "$40M+ missed commissions uncovered",
+      "$20M+ missed commissions uncovered",
       "100+ data feeds ingested into Snowflake",
       "Millions of records processed in ETL",
     ],
@@ -357,6 +360,27 @@ export const projects: Project[] = [
       "Microservices",
     ],
     industryIds: ["translation-nlp", "ai-ml", "multi-tenant-saas"],
+    link: "https://marshub.com",
+  },
+  {
+    name: "Marstranslation",
+    category: "Localization · Translation · SaaS",
+    description:
+      "Marstranslation is a global localization and translation platform serving 100+ languages — including software localization, website localization, and neural machine translation. Large enterprises rely on it for end-to-end translation workflows, while an open bidding model lets vendors compete on client projects for strong quality and pricing.",
+    impact: [
+      "100+ languages with software & website localization",
+      "25+ machine translation engines integrated",
+      "Open bidding marketplace for clients and vendors",
+    ],
+    stack: [
+      "Ruby on Rails 6",
+      "React.js",
+      "Neural MT",
+      "PostgreSQL",
+      "REST APIs",
+    ],
+    industryIds: ["translation-nlp", "multi-tenant-saas", "ai-ml"],
+    link: "https://marstranslation.com",
   },
   {
     name: "StackShare",
@@ -377,6 +401,7 @@ export const projects: Project[] = [
       "Kubernetes",
     ],
     industryIds: ["multi-tenant-saas", "devops-platform"],
+    link: "https://stackshare.io",
   },
   {
     name: "BlueCollor Portal",
@@ -457,6 +482,16 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Frontend Frameworks",
     items: ["ReactJS", "Next.js", "Redux", "Vue.js", "HTML5", "Tailwind CSS"],
+  },
+  {
+    title: "Product & experience",
+    items: [
+      "Discovery, roadmaps & prioritization",
+      "PRDs, user stories & acceptance criteria",
+      "Stakeholder alignment (PM, design, GTM)",
+      "UX collaboration & iterative delivery",
+      "Funnels, analytics & outcome metrics",
+    ],
   },
   {
     title: "AI & Machine Learning",
@@ -548,9 +583,9 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
   {
-    value: "$40M+",
+    value: "$20M+",
     label: "Revenue uncovered",
-    description: "Built an AI auditing engine that found $40M+ in missed commissions across 10+ years of MLS transactions.",
+    description: "Built an AI auditing engine that found $20M+ in missed commissions across 10+ years of MLS transactions.",
   },
   {
     value: "100+",
@@ -597,7 +632,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Working with Saim was a turning point. His AI auditing engine surfaced $40M+ we didn't know we were missing. He doesn't just write code — he uncovers business value.",
+      "Working with Saim was a turning point. His AI auditing engine surfaced $20M+ we didn't know we were missing. He doesn't just write code — he uncovers business value.",
     name: "Product Owner",
     role: "Product Leadership",
     company: "JWS Software Group",
@@ -615,7 +650,7 @@ export const principles: { title: string; description: string }[] = [
   {
     title: "Outcomes over output",
     description:
-      "I align engineering work to measurable business outcomes — uncovering $40M+ in revenue, reducing defects by 75%, and shaving release cycles by 30%.",
+      "I align engineering work to measurable business outcomes — uncovering $20M+ in revenue, reducing defects by 75%, and shaving release cycles by 30%.",
   },
   {
     title: "Pragmatic architecture",
