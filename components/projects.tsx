@@ -16,6 +16,14 @@ function industryNameById(id: string): string | undefined {
   return industries.find((i) => i.id === id)?.name;
 }
 
+function projectLinkHostname(url: string): string {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
 function ProjectCard({ p, index }: { p: Project; index: number }) {
   return (
     <motion.article
@@ -26,69 +34,74 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
       transition={{ delay: (index % 2) * 0.06 }}
       className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/40 hover:bg-card/60 md:p-8"
     >
-      <div className="absolute -right-24 -top-24 h-56 w-56 rounded-full bg-primary/10 opacity-0 blur-3xl transition group-hover:opacity-100" />
+      <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-primary/10 opacity-0 blur-3xl transition group-hover:opacity-100" />
 
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <span className="rounded-full border border-border/60 bg-background/40 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          {p.category}
-        </span>
-        {p.link && (
-          <a
-            href={p.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition group-hover:text-primary"
-            aria-label={`Open ${p.name}`}
-          >
-            <ArrowUpRight size={18} />
-          </a>
-        )}
-      </div>
-
-      <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
-        {p.name}
-      </h3>
-
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-        {p.description}
-      </p>
-
-      <div className="mt-3 flex flex-wrap gap-1.5">
-        {p.industryIds.map((id) => {
-          const label = industryNameById(id);
-          if (!label) return null;
-          return (
-            <span
-              key={id}
-              className="rounded-md border border-primary/20 bg-primary/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary/90"
+      <div className="relative z-[1] flex min-h-0 flex-1 flex-col">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <span className="rounded-full border border-border/60 bg-background/40 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            {p.category}
+          </span>
+          {p.link && (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center gap-1 rounded-md border border-border/60 bg-background/50 px-2 py-1 text-xs font-medium text-primary transition hover:border-primary/50 hover:bg-primary/10"
+              aria-label={`Visit ${projectLinkHostname(p.link)} (opens in a new tab)`}
             >
-              {label}
-            </span>
-          );
-        })}
-      </div>
+              <span className="max-w-[140px] truncate sm:max-w-[180px]">
+                {projectLinkHostname(p.link)}
+              </span>
+              <ArrowUpRight size={14} className="shrink-0" />
+            </a>
+          )}
+        </div>
 
-      <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3">
-        {p.impact.map((m) => (
-          <div
-            key={m}
-            className="rounded-lg border border-border/60 bg-background/40 px-3 py-2 text-xs text-foreground/90"
-          >
-            {m}
-          </div>
-        ))}
-      </div>
+        <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
+          {p.name}
+        </h3>
 
-      <div className="mt-auto pt-6">
-        <div className="flex flex-wrap gap-1.5">
-          {p.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-md border border-border/60 bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          {p.description}
+        </p>
+
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {p.industryIds.map((id) => {
+            const label = industryNameById(id);
+            if (!label) return null;
+            return (
+              <span
+                key={id}
+                className="rounded-md border border-primary/20 bg-primary/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary/90"
+              >
+                {label}
+              </span>
+            );
+          })}
+        </div>
+
+        <div className="mt-5 grid grid-cols-1 gap-2 sm:grid-cols-3">
+          {p.impact.map((m) => (
+            <div
+              key={m}
+              className="rounded-lg border border-border/60 bg-background/40 px-3 py-2 text-xs text-foreground/90"
             >
-              {s}
-            </span>
+              {m}
+            </div>
           ))}
+        </div>
+
+        <div className="mt-auto pt-6">
+          <div className="flex flex-wrap gap-1.5">
+            {p.stack.map((s) => (
+              <span
+                key={s}
+                className="rounded-md border border-border/60 bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </motion.article>
