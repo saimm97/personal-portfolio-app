@@ -39,7 +39,7 @@ export function Navigation() {
           : "border-b border-transparent",
       )}
     >
-      <nav className="container flex h-16 items-center justify-between">
+      <nav className="container flex h-16 shrink-0 items-center justify-between">
         <Link
           href="#top"
           aria-label={`${profile.name} — home`}
@@ -100,17 +100,18 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — absolutely positioned so a closed menu never reserves viewport height */}
       <div
         className={cn(
-          "md:hidden",
+          "absolute inset-x-0 top-full z-[60] md:hidden",
           open
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0",
-          "transition-opacity duration-200",
+            ? "pointer-events-auto max-h-[min(80vh,calc(100dvh-4rem))] border-b border-border/60 opacity-100 shadow-lg"
+            : "pointer-events-none max-h-0 overflow-hidden border-b-0 opacity-0",
+          "bg-background/95 backdrop-blur-xl transition-[opacity,max-height] duration-200 ease-out",
         )}
+        aria-hidden={!open}
       >
-        <div className="container border-t border-border/60 bg-background/95 py-4 backdrop-blur-xl">
+        <div className="container py-4">
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <li key={link.href}>

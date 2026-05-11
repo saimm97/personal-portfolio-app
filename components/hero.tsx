@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate flex min-h-[100svh] items-center overflow-hidden pt-24"
+      className="relative isolate block w-full overflow-hidden pt-24 pb-14 sm:pb-16 md:flex md:min-h-[100svh] md:items-center md:pb-0"
     >
       {/* Background layers */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-grid mask-fade-y opacity-40" />
