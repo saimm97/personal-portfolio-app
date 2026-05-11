@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Section, fadeUp } from "@/components/section";
@@ -177,40 +178,38 @@ function ProjectsFilterBar({
 
 const VALID_INDUSTRY_IDS = new Set(industries.map((i) => i.id));
 
-function readIndustryFromSearch(search: string): string | null {
-  const raw = new URLSearchParams(search).get("industry");
-  return raw && VALID_INDUSTRY_IDS.has(raw) ? raw : null;
-}
+/**
+ * Reads `?industry=` from the URL. Filter is fully derived from search params
+ * (no local useState) so we never update Projects while the Router is rendering.
+ */
+function ProjectsContentInner() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-function ProjectsContent() {
-  /** `null` = all industries — matches SSR until the client syncs from `window.location`. */
-  const [activeIndustryId, setActiveIndustryId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const sync = () => {
-      setActiveIndustryId(readIndustryFromSearch(window.location.search));
-    };
-    sync();
-    window.addEventListener("popstate", sync);
-    return () => window.removeEventListener("popstate", sync);
-  }, []);
+  const activeIndustryId = useMemo(() => {
+    const raw = searchParams.get("industry");
+    return raw && VALID_INDUSTRY_IDS.has(raw) ? raw : null;
+  }, [searchParams]);
 
   const filtered = useMemo(
     () => projectsByIndustry(activeIndustryId),
     [activeIndustryId],
   );
 
-  const setIndustryFilter = useCallback((id: string | null) => {
-    const nextId = id && VALID_INDUSTRY_IDS.has(id) ? id : null;
-    setActiveIndustryId(nextId);
-
-    const url = new URL(window.location.href);
-    if (nextId) url.searchParams.set("industry", nextId);
-    else url.searchParams.delete("industry");
-    url.hash = "#projects";
-    const pathAndQuery = `${url.pathname}${url.search}`;
-    window.history.replaceState(null, "", `${pathAndQuery}${url.hash}`);
-  }, []);
+  const setIndustryFilter = useCallback(
+    (id: string | null) => {
+      const nextId = id && VALID_INDUSTRY_IDS.has(id) ? id : null;
+      const next = new URLSearchParams(searchParams.toString());
+      if (nextId) next.set("industry", nextId);
+      else next.delete("industry");
+      const qs = next.toString();
+      router.replace(`${pathname}${qs ? `?${qs}` : ""}#projects`, {
+        scroll: false,
+      });
+    },
+    [router, pathname, searchParams],
+  );
 
   return (
     <>
@@ -251,7 +250,7 @@ export function Projects() {
       title={<>Case studies with measurable impact</>}
       description="A snapshot of recent work. Each project includes the problem, the architecture, and the business outcome — filter by industry to find work closest to your domain."
     >
-      <ProjectsContent />
+      <ProjectsContentInner />
     </Section>
   );
 }

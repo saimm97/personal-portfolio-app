@@ -32,7 +32,7 @@ export function Industries() {
               transition={{ delay: (i % 4) * 0.05 }}
               className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/40 hover:bg-card/60"
             >
-              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 transition group-hover:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 transition group-hover:opacity-100" />
               <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/60 bg-background/60 text-primary transition group-hover:border-primary/40 group-hover:text-primary">
                 <Icon size={20} />
               </div>
