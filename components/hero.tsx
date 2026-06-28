@@ -40,11 +40,12 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.05 }}
-              className="mt-6 font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+              className="mt-6 font-display font-bold tracking-tight [text-wrap:balance]"
             >
-              <span className="text-foreground">{profile.name}</span>
-              <br />
-              <span className="text-gradient animate-shimmer">
+              <span className="block text-4xl text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+                {profile.name}
+              </span>
+              <span className="mt-1 block text-3xl text-gradient animate-shimmer sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-[1.05]">
                 {profile.title}
               </span>
             </motion.h1>
