@@ -27,7 +27,7 @@ export const profile = {
   yearsOfExperience: 6,
   email: "saimmalik8397@gmail.com",
   phone: "+92 344 4411987",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/SaimMalik(SeniorSoftware&AIEngineer).pdf",
   avatarUrl: "/avatar.jpg",
   socials: {
     github: "https://github.com/saimm97",
