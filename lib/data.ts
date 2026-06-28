@@ -22,7 +22,7 @@ export const profile = {
   tagline:
     "Senior Software Engineer with 6+ years building scalable SaaS platforms, AI-powered applications, and multi-tenant backend systems using Python, Django/FastAPI, React, Next.js, PostgreSQL, AWS, and GCP. Experienced in LLM-powered features, RAG assistants, AI agents, LangChain/LangGraph workflows, semantic search, and production-grade API systems. Built an AI-driven auditing platform that uncovered $40M+ in missed commissions and developed venture products from zero to launch for a European venture builder, including Kilow, a health app that raised $2.5M+. Led 10+ engineers across architecture, delivery, code reviews, CI/CD, and production reliability.",
   shortBio:
-    "I'm Saim Malik, a Senior Full Stack Engineer based in Lahore, Pakistan. I partner with startups as a hands-on lead — aligning architecture, velocity, and quality so teams can earn investor confidence and scale after the round. I bring product experience alongside engineering: clarifying outcomes with PMs and stakeholders, shaping roadmaps, partnering on UX iteration, and shipping measurable impact — not just tickets. I ship end-to-end across Django, FastAPI, Laravel, Rails, and React/Next.js, and I put machine learning, LLMs, and deep learning to work where it moves the needle: search, automation, auditing, and intelligent workflows. Performance, reliability, and production discipline are non-negotiable.",
+    "I'm Saim Malik, a Senior Software and AI Engineer. I partner with startups as a hands-on lead, aligning architecture, velocity, and quality so teams can earn investor confidence and scale after the round. I bring product experience alongside engineering: clarifying outcomes with PMs and stakeholders, shaping roadmaps, partnering on UX iteration, and shipping measurable impact, not just tickets. I ship end-to-end across Django, FastAPI, Laravel, Rails, and React/Next.js, and I put machine learning, LLMs, and deep learning to work where it moves the needle: search, automation, auditing, and intelligent workflows. Performance, reliability, and production discipline are non-negotiable.",
   location: "Lahore, Pakistan",
   yearsOfExperience: 6,
   email: "saimmalik8397@gmail.com",
@@ -150,7 +150,7 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    role: "Senior Full Stack Engineer / Team Lead",
+    role: "Senior Software Engineer → Associate Team Lead",
     company: "Devsinc",
     period: "2023 — Present",
     location: "Lahore, Pakistan",
@@ -176,7 +176,7 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    role: "Senior Full Stack Engineer",
+    role: "Senior Software Engineer",
     company: "letsremotify (Remote contract via Devsinc)",
     period: "01/2023 — 01/2025",
     location: "Remote",
@@ -283,6 +283,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "Kilow — Digital Weight-Loss Platform",
+    category: "Healthcare · Mobile · SaaS",
+    description:
+      "An Arabic-first digital weight-loss platform for Saudi Arabia pairing habit-building, nutrition planning, and doctor-supervised medical care (including GLP-1 programs) with an in-app market for supplements and lab tests. Built zero-to-launch as a senior engineer for a European venture builder — cross-platform React Native apps backed by Python (FastAPI/Flask) APIs on Google Cloud, plus a companion web app owned end-to-end from first commit to production. The product went on to raise $2.5M+.",
+    impact: [
+      "Built zero-to-launch; raised $2.5M+",
+      "React Native apps on Python (FastAPI/Flask) APIs",
+      "Doctor-supervised programs incl. GLP-1",
+    ],
+    stack: [
+      "React Native",
+      "Python",
+      "FastAPI",
+      "Flask",
+      "Google Cloud",
+      "CI/CD",
+      "REST APIs",
+    ],
+    industryIds: ["healthcare", "multi-tenant-saas"],
+  },
+  {
     name: "AI Powered Career Engine",
     category: "AI / ML · Career Tech · SaaS",
     description:
@@ -377,25 +398,28 @@ export const projects: Project[] = [
     industryIds: ["healthcare", "ai-ml", "multi-tenant-saas"],
   },
   {
-    name: "Kilow — Digital Weight-Loss Platform",
-    category: "Healthcare · Mobile · SaaS",
+    name: "Park Guard — Parking Damage-Protection & Claims Platform",
+    category: "InsurTech · Enterprise SaaS · DevOps",
     description:
-      "An Arabic-first digital weight-loss platform for Saudi Arabia pairing habit-building, nutrition planning, and doctor-supervised medical care (including GLP-1 programs) with an in-app market for supplements and lab tests. Built zero-to-launch as a senior engineer for a European venture builder — cross-platform React Native apps backed by Python (FastAPI/Flask) APIs on Google Cloud, plus a companion web app owned end-to-end from first commit to production. The product went on to raise $2.5M+.",
+      "The parking industry's first true damage-protection insurance — a B2B startup built from scratch that went on to raise multiple rounds of investment. It lets parking operators, aggregators, and software providers offer customers embedded coverage (theft, door dings, and more) as a new revenue stream via a secure API, with a multi-tenant RBAC platform, a full claim-lifecycle engine, and a Coverage Hub dashboard for real-time claims and conversion analytics. I led the EKS → ECS migration for zero-downtime CI/CD and shipped the partner-facing React dashboard.",
     impact: [
-      "Built zero-to-launch; raised $2.5M+",
-      "React Native apps on Python (FastAPI/Flask) APIs",
-      "Doctor-supervised programs incl. GLP-1",
+      "Built from scratch; raised multiple investment rounds",
+      "Embedded-insurance API for booking-time coverage",
+      "EKS → ECS migration with zero-downtime CI/CD",
     ],
     stack: [
-      "React Native",
-      "Python",
-      "FastAPI",
-      "Flask",
-      "Google Cloud",
-      "CI/CD",
-      "REST APIs",
+      "Django",
+      "PostgreSQL",
+      "Celery",
+      "Redis",
+      "Elasticsearch",
+      "React",
+      "AWS (ECS/EKS, S3)",
+      "Docker",
+      "GitHub Actions",
     ],
-    industryIds: ["healthcare", "multi-tenant-saas"],
+    industryIds: ["multi-tenant-saas", "devops-platform", "data-engineering"],
+    link: "https://parkguard.com",
   },
   {
     name: "AI-Powered E-Commerce Marketplace",
@@ -543,6 +567,20 @@ export type Product = {
 
 export const products: Product[] = [
   {
+    name: "Kilow",
+    category: "Healthcare · Mobile",
+    tagline: "Arabic-first digital weight-loss with real doctor supervision.",
+    description:
+      "Saudi Arabia's first comprehensive Arabic-first digital weight-loss platform, blending habit-building, flexible nutrition, and licensed medical supervision (including GLP-1 programs) with an in-app market for supplements and lab tests. Built zero-to-launch as a senior engineer for a European venture builder — React Native apps on Python (FastAPI/Flask) APIs and Google Cloud, plus a companion web app — the product went on to raise $2.5M+.",
+    status: "Live",
+    highlights: [
+      "Habit, nutrition & doctor-supervised GLP-1 programs",
+      "React Native apps on Python APIs (GCP)",
+      "Built zero-to-launch; raised $2.5M+",
+    ],
+    stack: ["React Native", "Python", "FastAPI", "Flask", "Google Cloud"],
+  },
+  {
     name: "AI Powered Career Engine",
     category: "AI / ML · Career Tech",
     tagline: "LLM-powered job discovery, scoring, and application tailoring.",
@@ -612,20 +650,6 @@ export const products: Product[] = [
     ],
     stack: ["Next.js 14", "TypeScript", "NextAuth.js", "Stripe", "Tailwind CSS", "Zod"],
   },
-  {
-    name: "Kilow",
-    category: "Healthcare · Mobile",
-    tagline: "Arabic-first digital weight-loss with real doctor supervision.",
-    description:
-      "Saudi Arabia's first comprehensive Arabic-first digital weight-loss platform, blending habit-building, flexible nutrition, and licensed medical supervision (including GLP-1 programs) with an in-app market for supplements and lab tests. Built zero-to-launch as a senior engineer for a European venture builder — React Native apps on Python (FastAPI/Flask) APIs and Google Cloud, plus a companion web app — the product went on to raise $2.5M+.",
-    status: "Live",
-    highlights: [
-      "Habit, nutrition & doctor-supervised GLP-1 programs",
-      "React Native apps on Python APIs (GCP)",
-      "Built zero-to-launch; raised $2.5M+",
-    ],
-    stack: ["React Native", "Python", "FastAPI", "Flask", "Google Cloud"],
-  },
 ];
 
 export type SkillGroup = { title: string; items: string[] };
@@ -643,12 +667,19 @@ export const skillGroups: SkillGroup[] = [
       "Flask",
       "Ruby on Rails",
       "Django REST Framework",
-      "GraphQL",
     ],
   },
   {
     title: "Frontend Frameworks",
-    items: ["ReactJS", "Next.js", "Redux", "Vue.js", "HTML5", "Tailwind CSS"],
+    items: [
+      "ReactJS",
+      "Next.js",
+      "React Native",
+      "Redux",
+      "Vue.js",
+      "HTML5",
+      "Tailwind CSS",
+    ],
   },
   {
     title: "Product & experience",
@@ -664,32 +695,45 @@ export const skillGroups: SkillGroup[] = [
     title: "AI & Machine Learning",
     items: [
       "Large Language Models (LLMs)",
-      "OpenAI API",
-      "Prompt Engineering",
-      "AI Assistants",
+      "OpenAI",
+      "LLM Integration",
       "Retrieval-Augmented Generation",
-      "Intelligent Search",
-      "NLP",
+      "LangChain",
+      "AI Agents",
+      "Prompt Engineering",
+      "Token/Context Optimization",
+      "Vector Search",
+      "Embeddings",
+      "Semantic Search",
       "Recommendation Systems",
-      "ML Pipelines",
-      "Model Deployment",
     ],
   },
   {
     title: "Cloud & DevOps",
     items: [
       "AWS",
+      "GCP",
       "S3",
       "EC2",
       "RDS",
       "SQS",
       "IAM",
+      "ECS",
+      "EKS",
+      "AWS Lambda",
+      "SageMaker",
+      "Vertex AI",
+      "Model Deployment & Serving",
+      "Auto Scaling",
+      "Load Balancing",
       "Docker",
       "Kubernetes",
+      "Terraform",
       "CI/CD Pipelines",
       "Jenkins",
       "CircleCI",
       "GitHub Actions",
+      "CloudWatch",
       "Cloud Deployment",
     ],
   },
