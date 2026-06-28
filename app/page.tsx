@@ -5,6 +5,7 @@ import { Achievements } from "@/components/achievements";
 import { About } from "@/components/about";
 import { Experience } from "@/components/experience";
 import { Industries } from "@/components/industries";
+import { Products } from "@/components/products";
 import { ProjectsSectionSkeleton } from "@/components/projects-skeleton";
 import { Projects } from "@/components/projects";
 import { Skills } from "@/components/skills";
@@ -23,6 +24,7 @@ export default function HomePage() {
         <About />
         <Experience />
         <Industries />
+        <Products />
         <Suspense fallback={<ProjectsSectionSkeleton />}>
           <Projects />
         </Suspense>

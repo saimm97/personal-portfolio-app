@@ -18,9 +18,9 @@ import {
 
 export const profile = {
   name: "Saim Malik",
-  title: "Senior Full Stack Engineer",
+  title: "Senior Software and AI Engineer",
   tagline:
-    "Senior Full Stack Engineer with 6+ years shipping investor-ready SaaS and AI products across Python (Django/FastAPI), React/Next.js, Ruby on Rails, and Laravel — from classical ML to LLM- and deep learning-powered models in production. Trusted technical lead for multiple startups through launch and successful fundraising; flagship build: an auditing platform that uncovered $20M+ in revenue leakage. Strong product sense — discovery, roadmaps, and tight collaboration with design and GTM.",
+    "Senior Software Engineer with 6+ years building scalable SaaS platforms, AI-powered applications, and multi-tenant backend systems using Python, Django/FastAPI, React, Next.js, PostgreSQL, AWS, and GCP. Experienced in LLM-powered features, RAG assistants, AI agents, LangChain/LangGraph workflows, semantic search, and production-grade API systems. Built an AI-driven auditing platform that uncovered $40M+ in missed commissions and developed venture products from zero to launch for a European venture builder, including Kilow, a health app that raised $2.5M+. Led 10+ engineers across architecture, delivery, code reviews, CI/CD, and production reliability.",
   shortBio:
     "I'm Saim Malik, a Senior Full Stack Engineer based in Lahore, Pakistan. I partner with startups as a hands-on lead — aligning architecture, velocity, and quality so teams can earn investor confidence and scale after the round. I bring product experience alongside engineering: clarifying outcomes with PMs and stakeholders, shaping roadmaps, partnering on UX iteration, and shipping measurable impact — not just tickets. I ship end-to-end across Django, FastAPI, Laravel, Rails, and React/Next.js, and I put machine learning, LLMs, and deep learning to work where it moves the needle: search, automation, auditing, and intelligent workflows. Performance, reliability, and production discipline are non-negotiable.",
   location: "Lahore, Pakistan",
@@ -40,6 +40,7 @@ export const profile = {
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
+  { label: "Products", href: "#products" },
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Testimonials", href: "#testimonials" },
@@ -47,13 +48,10 @@ export const navLinks = [
 ];
 
 export const stats: { label: string; value: string }[] = [
+  { label: "Revenue uncovered", value: "$40M+" },
   { label: "Years of Experience", value: "6+" },
-  { label: "Engineers Led", value: "8+" },
+  { label: "Engineers Led", value: "10+" },
   { label: "Projects worked on", value: "12+" },
-  {
-    label: "Projects taken through to investment",
-    value: "5+",
-  },
 ];
 
 export type Industry = {
@@ -127,7 +125,7 @@ export const industries: Industry[] = [
     icon: BadgeDollarSign,
     description:
       "Built AI auditing engines using fuzzy matching and ML heuristics to recover missed commissions and revenue leakage.",
-    highlights: ["$20M+ uncovered", "Fuzzy matching", "Heuristic ML"],
+    highlights: ["$40M+ uncovered", "Fuzzy matching", "Heuristic ML"],
   },
   {
     id: "devops-platform",
@@ -158,12 +156,12 @@ export const experiences: Experience[] = [
     location: "Lahore, Pakistan",
     industry: "Multi-Tenant SaaS · AI",
     summary:
-      "Software and product engineering company delivering enterprise-scale web and mobile solutions. I lead a 15+ engineer team building multi-tenant SaaS platforms and AI-powered features.",
+      "Software and product engineering company delivering enterprise-scale web and mobile solutions. I lead a 10+ engineer team building multi-tenant SaaS platforms and AI-powered features.",
     achievements: [
       "Architected scalable multi-tenant SaaS platforms using Django, Next.js, and PostgreSQL.",
       "Built a data platform integrating 100+ sources, powering large-scale analytics and business insights.",
       "Developed AI-powered features including intelligent search, automation, and conversational assistants.",
-      "Led a team of 15+ engineers, reducing production defects by 75% through CI/CD improvements.",
+      "Led a team of 10+ engineers, reducing production defects by 75% through CI/CD improvements.",
       "Designed microservices architecture, improving system scalability and reliability.",
     ],
     stack: [
@@ -285,6 +283,121 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    name: "AI Powered Career Engine",
+    category: "AI / ML · Career Tech · SaaS",
+    description:
+      "A multi-tenant platform that discovers, scores, and tailors job applications through an LLM-driven pipeline (discover → score → select → tailor → PDF), with per-tenant data isolation. A provider-agnostic LLM layer with retry/fallback and JSON-schema-constrained outputs powers CV tailoring, deep role evaluation, and interview-prep generation — evolving to LangGraph orchestration with Postgres + pgvector for embedding-based candidate↔job matching.",
+    impact: [
+      "LLM pipeline: discover → score → tailor → PDF",
+      "Multi-provider LLM with schema-constrained outputs",
+      "pgvector semantic candidate↔job matching",
+    ],
+    stack: [
+      "TypeScript",
+      "Node / Express",
+      "React",
+      "Python",
+      "LangChain",
+      "LangGraph",
+      "PostgreSQL",
+      "pgvector",
+      "Docker",
+      "LLMs (multi-provider)",
+    ],
+    industryIds: ["ai-ml", "multi-tenant-saas"],
+  },
+  {
+    name: "Lead Management System",
+    category: "Sales Ops · Multi-Tenant SaaS · RBAC",
+    description:
+      "A greenfield FastAPI + Next.js platform for BD/engineer/admin lead tracking with hierarchical role-based access, a configurable Phase→Type→Status pipeline with full audit history, monthly engineer targets, a candidate-profile registry (LinkedIn/GitHub verification), issue logging and triage, and automated weekly/monthly reports delivered via dashboard charts and email — with pluggable LLM agent hooks for lead enrichment, status suggestions, and report narratives.",
+    impact: [
+      "Hierarchical RBAC across 4 roles + manager tree",
+      "Configurable status pipeline with full audit history",
+      "Scheduled weekly/monthly reports via Celery + email",
+    ],
+    stack: [
+      "FastAPI",
+      "Python",
+      "SQLAlchemy",
+      "PostgreSQL",
+      "Next.js",
+      "Tailwind",
+      "Celery",
+      "Redis",
+      "Recharts",
+      "JWT",
+      "Docker",
+    ],
+    industryIds: ["multi-tenant-saas", "ai-ml", "data-engineering"],
+  },
+  {
+    name: "PayFlow — Payment Application",
+    category: "Fintech · Payments · SaaS",
+    description:
+      "A full-featured web payment app built on Next.js 14 and TypeScript with NextAuth credential auth (bcrypt-hashed passwords, route protection). Supports Stripe Payment Intents with webhooks and refunds — falling back to a demo mode when keys aren't set — plus shareable payment links, payment requests, saved recipients, a transactions ledger with search, date filters, CSV export and printable receipts, notifications, and a stats dashboard. Validated end-to-end with Zod and built accessibility-first.",
+    impact: [
+      "Stripe Payment Intents, webhooks & refunds",
+      "Shareable payment links & request flows",
+      "Transactions ledger with CSV export & receipts",
+    ],
+    stack: [
+      "Next.js 14",
+      "TypeScript",
+      "NextAuth.js",
+      "Stripe",
+      "Tailwind CSS",
+      "Zod",
+      "bcryptjs",
+    ],
+    industryIds: ["ecommerce", "multi-tenant-saas"],
+  },
+  {
+    name: "HealthHub — AI Fitness & Wellness Coach",
+    category: "Healthcare · AI / ML · SaaS",
+    description:
+      "A Django platform for fitness, nutrition and health tracking with an AI wellness coach and a doctor-connection layer. The headline engineering idea is a guardrail-first AI pipeline: every message is screened by a transparent, auditable safety classifier before it can reach an LLM, keeping the coach in the wellness lane and redirecting medical, emergency, or crisis messages to a real consultation. Built as a hybrid backend — a server-rendered Django app and a versioned DRF API over one shared service layer — so an included Next.js frontend consumes the same backend with zero logic duplication.",
+    impact: [
+      "Guardrail-first AI pipeline with audited blocks",
+      "One service layer serves Django + REST API",
+      "Race-safe bookings via select_for_update()",
+    ],
+    stack: [
+      "Python",
+      "Django 5",
+      "Django REST Framework",
+      "PostgreSQL",
+      "Celery",
+      "Redis",
+      "Next.js",
+      "HTMX",
+      "Stripe",
+      "Docker",
+    ],
+    industryIds: ["healthcare", "ai-ml", "multi-tenant-saas"],
+  },
+  {
+    name: "Kilow — Digital Weight-Loss Platform",
+    category: "Healthcare · Mobile · SaaS",
+    description:
+      "An Arabic-first digital weight-loss platform for Saudi Arabia pairing habit-building, nutrition planning, and doctor-supervised medical care (including GLP-1 programs) with an in-app market for supplements and lab tests. Built zero-to-launch as a senior engineer for a European venture builder — cross-platform React Native apps backed by Python (FastAPI/Flask) APIs on Google Cloud, plus a companion web app owned end-to-end from first commit to production. The product went on to raise $2.5M+.",
+    impact: [
+      "Built zero-to-launch; raised $2.5M+",
+      "React Native apps on Python (FastAPI/Flask) APIs",
+      "Doctor-supervised programs incl. GLP-1",
+    ],
+    stack: [
+      "React Native",
+      "Python",
+      "FastAPI",
+      "Flask",
+      "Google Cloud",
+      "CI/CD",
+      "REST APIs",
+    ],
+    industryIds: ["healthcare", "multi-tenant-saas"],
+  },
+  {
     name: "AI-Powered E-Commerce Marketplace",
     category: "E-commerce · AI / ML",
     description:
@@ -308,12 +421,12 @@ export const projects: Project[] = [
     industryIds: ["ecommerce", "ai-ml", "multi-tenant-saas"],
   },
   {
-    name: "MLSIngestion Pro",
+    name: "Neighborhoods.com",
     category: "Real Estate · Data Engineering · AI Audit",
     description:
-      "Distributed microservices platform ingesting 100+ MLS feeds and public datasets into Snowflake, with an AI-driven auditing engine that uncovered $20M+ in missed commissions over 10+ years of transactions.",
+      "Distributed microservices platform ingesting 100+ MLS feeds and public datasets into Snowflake, with an AI-driven auditing engine that uncovered $40M+ in missed commissions over 10+ years of transactions.",
     impact: [
-      "$20M+ missed commissions uncovered",
+      "$40M+ missed commissions uncovered",
       "100+ data feeds ingested into Snowflake",
       "Millions of records processed in ETL",
     ],
@@ -338,6 +451,7 @@ export const projects: Project[] = [
       "multi-tenant-saas",
       "devops-platform",
     ],
+    link: "https://neighborhoods.com",
   },
   {
     name: "Marshub — Enterprise Translation & NLP Platform",
@@ -403,53 +517,6 @@ export const projects: Project[] = [
     industryIds: ["multi-tenant-saas", "devops-platform"],
     link: "https://stackshare.io",
   },
-  {
-    name: "BlueCollor Portal",
-    category: "HR Tech · Localization · ML",
-    description:
-      "Web platform for global localization and translation services combining a job marketplace for seekers and employers with real-time messaging, dashboards, and optional premium listings. Rails and PostgreSQL core on Heroku, with Django and Celery pipelines for profile enrichment, ML matching, and spam detection.",
-    impact: [
-      "Real-time messaging and personalized dashboards",
-      "ML job–candidate matching and resume parsing",
-      "Secure auth with Devise and JWT",
-    ],
-    stack: [
-      "Ruby on Rails",
-      "React.js",
-      "PostgreSQL",
-      "Django",
-      "Python",
-      "Celery",
-      "Redis",
-      "Heroku",
-      "Devise",
-      "JWT",
-    ],
-    industryIds: ["translation-nlp", "multi-tenant-saas", "ai-ml"],
-  },
-  {
-    name: "Clinical Operations & Care Pathway Platform",
-    category: "Healthcare · Multi-Tenant SaaS · AI",
-    description:
-      "Multi-tenant SaaS for clinics and regional health networks: referral intake, care-pathway tracking, and operations analytics — with HIPAA-minded access control, audit trails, and ML-assisted prioritization so teams spend time on patients, not spreadsheets. Built in the same full-stack pattern as other investor-grade products: Python (Django/FastAPI), React/Next.js, PostgreSQL, and production-hardened APIs.",
-    impact: [
-      "Role-based access and audit-friendly event history",
-      "ML-assisted queue prioritization and SLA visibility",
-      "End-to-end Django/FastAPI + React/Next.js delivery",
-    ],
-    stack: [
-      "Python",
-      "Django",
-      "FastAPI",
-      "Next.js",
-      "React",
-      "PostgreSQL",
-      "Redis",
-      "AWS",
-      "Docker",
-    ],
-    industryIds: ["healthcare", "multi-tenant-saas", "ai-ml", "data-engineering"],
-  },
 ];
 
 export function projectsByIndustry(industryId: string | null): Project[] {
@@ -460,6 +527,106 @@ export function projectsByIndustry(industryId: string | null): Project[] {
 export function projectCountForIndustry(industryId: string): number {
   return projects.filter((p) => p.industryIds.includes(industryId)).length;
 }
+
+export type Product = {
+  name: string;
+  category: string;
+  /** Short, punchy value proposition. */
+  tagline: string;
+  description: string;
+  /** "Live" = publicly available, "Shipped" = delivered to production, "In Development" = actively building. */
+  status: "Live" | "Shipped" | "In Development";
+  highlights: string[];
+  stack: string[];
+  url?: string;
+};
+
+export const products: Product[] = [
+  {
+    name: "AI Powered Career Engine",
+    category: "AI / ML · Career Tech",
+    tagline: "LLM-powered job discovery, scoring, and application tailoring.",
+    description:
+      "A multi-tenant platform that runs the full job-application loop — discover → score → select → tailor → PDF — on a provider-agnostic LLM layer with JSON-schema-constrained outputs. It tailors CVs, runs CV-to-requirement gap analysis, and generates interview-prep stories, with LangGraph orchestration and pgvector embeddings matching candidates to roles by semantic similarity.",
+    status: "In Development",
+    highlights: [
+      "Pipeline: discover → score → select → tailor → PDF",
+      "Multi-provider LLM abstraction with retry/fallback",
+      "LangGraph + pgvector semantic matching",
+    ],
+    stack: ["TypeScript", "Node / Express", "React", "Python", "LangChain", "LangGraph", "pgvector", "Docker"],
+  },
+  {
+    name: "HealthHub — AI Fitness & Wellness Coach",
+    category: "Healthcare · AI / ML",
+    tagline: "An AI wellness coach with safety guardrails and a doctor layer.",
+    description:
+      "A Django fitness, nutrition and health-tracking platform with an AI wellness coach and consultation booking. Its guardrail-first pipeline screens every message before it can reach an LLM — refusing medical advice and redirecting to a real doctor — while a single shared service layer powers both the server-rendered Django app and a versioned REST API consumed by an included Next.js frontend.",
+    status: "Live",
+    highlights: [
+      "Guardrail-first AI pipeline with audited blocks",
+      "Shared service layer for Django + REST API",
+      "Doctor consultations with race-safe booking",
+    ],
+    stack: ["Python", "Django 5", "DRF", "PostgreSQL", "Celery", "Redis", "Next.js", "Docker"],
+  },
+  {
+    name: "Lead Management System",
+    category: "Sales Ops · SaaS",
+    tagline: "Hierarchical lead tracking with targets, profiles, and automated reports.",
+    description:
+      "An internal SaaS for BD, engineer, and admin teams to track leads end-to-end: role-based access down a manager hierarchy, a configurable Phase→Type→Status pipeline with audit history, monthly engineer targets, a candidate-profile registry with LinkedIn/GitHub verification, and issue triage — surfaced through dashboard KPIs and scheduled weekly/monthly email reports, with LLM agent hooks for enrichment and report narratives.",
+    status: "Live",
+    highlights: [
+      "Hierarchical RBAC across BD, engineer, manager & admin",
+      "Configurable status pipeline with full audit history",
+      "Automated weekly/monthly reports + dashboard charts",
+    ],
+    stack: ["FastAPI", "Python", "PostgreSQL", "Next.js", "Tailwind", "Celery", "Redis", "Docker"],
+  },
+  {
+    name: "AI-Powered E-Commerce Marketplace",
+    category: "E-commerce · AI / ML",
+    tagline: "An AI-driven marketplace with ML recommendations and smart search.",
+    description:
+      "An AI-driven marketplace pairing a TensorFlow recommendation engine with NLP-powered product search and customer interactions, Elasticsearch-backed intelligent search, ML fraud detection, and Stripe payments — delivered on a microservices architecture.",
+    status: "Shipped",
+    highlights: [
+      "ML recommendation engine in production",
+      "Elasticsearch-powered intelligent search",
+      "Stripe payments with ML fraud detection",
+    ],
+    stack: ["Django", "Ruby on Rails", "React.js", "TensorFlow", "Elasticsearch", "Stripe", "Redis", "AWS"],
+  },
+  {
+    name: "PayFlow",
+    category: "Fintech · Payments",
+    tagline: "A professional web payment app with Stripe and demo mode.",
+    description:
+      "A full-featured payment application on Next.js 14 with NextAuth credential auth, Stripe Payment Intents (webhooks and refunds, with a demo-mode fallback), shareable payment links, payment requests, saved recipients, and a searchable transactions ledger with CSV export and printable receipts — all validated with Zod and built accessibility-first.",
+    status: "Shipped",
+    highlights: [
+      "Stripe Payment Intents with webhooks & refunds",
+      "Payment links, requests & saved recipients",
+      "Transactions ledger with CSV export & receipts",
+    ],
+    stack: ["Next.js 14", "TypeScript", "NextAuth.js", "Stripe", "Tailwind CSS", "Zod"],
+  },
+  {
+    name: "Kilow",
+    category: "Healthcare · Mobile",
+    tagline: "Arabic-first digital weight-loss with real doctor supervision.",
+    description:
+      "Saudi Arabia's first comprehensive Arabic-first digital weight-loss platform, blending habit-building, flexible nutrition, and licensed medical supervision (including GLP-1 programs) with an in-app market for supplements and lab tests. Built zero-to-launch as a senior engineer for a European venture builder — React Native apps on Python (FastAPI/Flask) APIs and Google Cloud, plus a companion web app — the product went on to raise $2.5M+.",
+    status: "Live",
+    highlights: [
+      "Habit, nutrition & doctor-supervised GLP-1 programs",
+      "React Native apps on Python APIs (GCP)",
+      "Built zero-to-launch; raised $2.5M+",
+    ],
+    stack: ["React Native", "Python", "FastAPI", "Flask", "Google Cloud"],
+  },
+];
 
 export type SkillGroup = { title: string; items: string[] };
 
@@ -583,9 +750,9 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
   {
-    value: "$20M+",
+    value: "$40M+",
     label: "Revenue uncovered",
-    description: "Built an AI auditing engine that found $20M+ in missed commissions across 10+ years of MLS transactions.",
+    description: "Built an AI auditing engine that found $40M+ in missed commissions across 10+ years of MLS transactions.",
   },
   {
     value: "100+",
@@ -608,9 +775,9 @@ export const achievements: Achievement[] = [
     description: "Cut release cycles by 30% with automated CI/CD pipelines and Dockerized deployments.",
   },
   {
-    value: "15+",
+    value: "10+",
     label: "Engineers led",
-    description: "Mentored and led teams of 15+ engineers across architecture reviews, hiring, and on-call.",
+    description: "Mentored and led teams of 10+ engineers across architecture reviews, hiring, and on-call.",
   },
 ];
 
@@ -632,7 +799,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "Working with Saim was a turning point. His AI auditing engine surfaced $20M+ we didn't know we were missing. He doesn't just write code — he uncovers business value.",
+      "Working with Saim was a turning point. His AI auditing engine surfaced $40M+ we didn't know we were missing. He doesn't just write code — he uncovers business value.",
     name: "Product Owner",
     role: "Product Leadership",
     company: "JWS Software Group",
@@ -650,7 +817,7 @@ export const principles: { title: string; description: string }[] = [
   {
     title: "Outcomes over output",
     description:
-      "I align engineering work to measurable business outcomes — uncovering $20M+ in revenue, reducing defects by 75%, and shaving release cycles by 30%.",
+      "I align engineering work to measurable business outcomes — uncovering $40M+ in revenue, reducing defects by 75%, and shaving release cycles by 30%.",
   },
   {
     title: "Pragmatic architecture",
@@ -665,7 +832,7 @@ export const principles: { title: string; description: string }[] = [
   {
     title: "Lift the team",
     description:
-      "I invest in mentorship, RFCs, and code review standards. Leading 15+ engineers has taught me that great teams compound — clarity and trust are the multipliers.",
+      "I invest in mentorship, RFCs, and code review standards. Leading 10+ engineers has taught me that great teams compound — clarity and trust are the multipliers.",
   },
 ];
 
