@@ -12,7 +12,7 @@ export function Contact() {
       id="contact"
       eyebrow="Contact"
       title={<>Let&rsquo;s build something great together</>}
-      description="I'm currently open to senior and lead engineering roles, advisory engagements, and select consulting work. Drop me a message — or reach out directly via any of the channels below."
+      description="I'm currently open to senior and lead engineering roles, advisory engagements, and select consulting work. Overlaps US mornings / EU afternoons — book a 30-minute call or reach out directly."
     >
       <motion.div
         initial="hidden"
@@ -33,7 +33,16 @@ export function Contact() {
               Whether it&rsquo;s scaling a system, modernizing a legacy stack, or
               leveling up a team — tell me about it.
             </p>
-            <div className="mt-6">
+            <a
+              href={profile.calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_0_1px_hsl(var(--primary)/0.3),0_8px_30px_-8px_hsl(var(--primary)/0.55)] transition hover:bg-primary/90"
+            >
+              Book a 30-min call
+              <ArrowRight size={16} />
+            </a>
+            <div className="mt-8">
               <ContactForm />
             </div>
           </div>

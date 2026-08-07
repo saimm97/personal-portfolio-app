@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Calendar, Download, MapPin, Phone } from "lucide-react";
 import { profile, stats } from "@/lib/data";
 import { Avatar } from "@/components/avatar";
 import { CountUp } from "@/components/count-up";
@@ -95,12 +95,15 @@ export function Hero() {
                 className="transition group-hover:translate-x-1"
               />
             </Link>
-            <Link
-              href="#contact"
+            <a
+              href={profile.calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-border/70 bg-background/50 px-5 py-3 text-sm font-medium text-foreground backdrop-blur transition hover:border-primary/50 hover:bg-card"
             >
-              Get in touch
-            </Link>
+              <Calendar size={16} className="text-primary" />
+              Book a call
+            </a>
             <a
               href={profile.resumeUrl}
               download

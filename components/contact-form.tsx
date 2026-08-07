@@ -113,9 +113,7 @@ export function ContactForm() {
             <span>{state.message}</span>
           </div>
         ) : (
-          <span className="text-xs text-muted-foreground">
-            I usually reply within 1–2 business days.
-          </span>
+          <span />
         )}
         <button
           type="submit"

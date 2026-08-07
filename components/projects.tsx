@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Section, fadeUp } from "@/components/section";
 import {
   industries,
+  industriesWithProjects,
   projectsByIndustry,
   projectCountForIndustry,
   type Project,
@@ -144,7 +145,7 @@ function ProjectsFilterBar({
               ({projectsByIndustry(null).length})
             </span>
           </button>
-          {industries.map((ind) => {
+          {industriesWithProjects().map((ind) => {
             const count = projectCountForIndustry(ind.id);
             const active = activeIndustryId === ind.id;
             return (
@@ -153,11 +154,8 @@ function ProjectsFilterBar({
                 type="button"
                 onClick={() => onSelect(ind.id)}
                 aria-pressed={active}
-                disabled={count === 0}
-                title={count === 0 ? "No projects in this industry yet" : undefined}
                 className={cn(
                   "shrink-0 rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider transition",
-                  count === 0 && "cursor-not-allowed opacity-40",
                   active
                     ? "border-primary bg-primary/15 text-primary"
                     : "border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground",

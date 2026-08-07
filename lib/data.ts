@@ -13,6 +13,7 @@ import {
   Mail,
   Phone,
   GraduationCap,
+  Calendar,
 } from "lucide-react";
 
 export const profile = {
@@ -31,6 +32,7 @@ export const profile = {
   email: "saimmalik8397@gmail.com",
   phone: "+92 344 4411987",
   resumeUrl: "/SaimMalik(SeniorSoftware&AIEngineer).pdf",
+  calendlyUrl: "https://calendly.com/saimmalik8397/30min",
   avatarUrl: "/avatar.jpg",
   socials: {
     github: "https://github.com/saimm97",
@@ -304,6 +306,11 @@ export function projectCountForIndustry(industryId: string): number {
   return projects.filter((p) => p.industryIds.includes(industryId)).length;
 }
 
+/** Industries that have at least one tagged project (proof on the site). */
+export function industriesWithProjects(): Industry[] {
+  return industries.filter((i) => projectCountForIndustry(i.id) > 0);
+}
+
 export type Product = {
   name: string;
   category: string;
@@ -435,6 +442,7 @@ export const skillGroups: SkillGroup[] = [
       "LLM Integration",
       "Retrieval-Augmented Generation (RAG)",
       "LangChain",
+      "LangGraph",
       "AI Agents",
       "Prompt Engineering",
       "Token/Context Optimization",
@@ -632,6 +640,7 @@ export const socialLinks: {
   href: string;
   icon: LucideIcon;
 }[] = [
+  { label: "Book a call", href: profile.calendlyUrl, icon: Calendar },
   { label: "GitHub", href: profile.socials.github, icon: Github },
   { label: "LinkedIn", href: profile.socials.linkedin, icon: Linkedin },
   { label: "Email", href: profile.socials.email, icon: Mail },

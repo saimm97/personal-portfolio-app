@@ -82,12 +82,14 @@ export function Navigation() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Link
-            href="#contact"
+          <a
+            href={profile.calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-[0_0_0_1px_hsl(var(--primary)/0.25)] transition hover:bg-primary/90 md:inline-flex"
           >
-            Get in touch
-          </Link>
+            Book a call
+          </a>
           <button
             type="button"
             aria-label="Toggle menu"
@@ -125,13 +127,15 @@ export function Navigation() {
               </li>
             ))}
             <li className="pt-2">
-              <Link
-                href="#contact"
+              <a
+                href={profile.calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="block rounded-md border border-primary/40 bg-primary/10 px-3 py-2 text-center text-sm font-medium text-primary"
               >
-                Get in touch
-              </Link>
+                Book a call
+              </a>
             </li>
           </ul>
         </div>
