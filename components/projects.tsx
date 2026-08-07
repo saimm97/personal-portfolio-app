@@ -117,56 +117,51 @@ function ProjectsFilterBar({
 }) {
   return (
     <div
-      className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between"
+      className="mb-10 flex flex-col gap-2 sm:items-end"
       role="region"
       aria-label="Filter projects by industry"
     >
-      <p className="max-w-xl text-sm text-muted-foreground">
-        Browse case studies by industry. Projects can span multiple verticals — pick a lens to match what you are building.
-      </p>
-      <div className="flex max-w-full flex-col gap-2 sm:items-end">
-        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-          Filter by industry
-        </span>
-        <div className="flex max-w-[100vw] gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:max-w-[min(100%,520px)] sm:flex-wrap sm:justify-end [&::-webkit-scrollbar]:hidden">
-          <button
-            type="button"
-            onClick={() => onSelect(null)}
-            aria-pressed={activeIndustryId === null}
-            className={cn(
-              "shrink-0 rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider transition",
-              activeIndustryId === null
-                ? "border-primary bg-primary/15 text-primary"
-                : "border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground",
-            )}
-          >
-            All
-            <span className="ml-1.5 tabular-nums opacity-70">
-              ({projectsByIndustry(null).length})
-            </span>
-          </button>
-          {industriesWithProjects().map((ind) => {
-            const count = projectCountForIndustry(ind.id);
-            const active = activeIndustryId === ind.id;
-            return (
-              <button
-                key={ind.id}
-                type="button"
-                onClick={() => onSelect(ind.id)}
-                aria-pressed={active}
-                className={cn(
-                  "shrink-0 rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider transition",
-                  active
-                    ? "border-primary bg-primary/15 text-primary"
-                    : "border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground",
-                )}
-              >
-                {ind.name}
-                <span className="ml-1.5 tabular-nums opacity-70">({count})</span>
-              </button>
-            );
-          })}
-        </div>
+      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+        Filter by industry
+      </span>
+      <div className="flex max-w-full gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:max-w-[min(100%,720px)] sm:flex-wrap sm:justify-end [&::-webkit-scrollbar]:hidden">
+        <button
+          type="button"
+          onClick={() => onSelect(null)}
+          aria-pressed={activeIndustryId === null}
+          className={cn(
+            "shrink-0 rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider transition",
+            activeIndustryId === null
+              ? "border-primary bg-primary/15 text-primary"
+              : "border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground",
+          )}
+        >
+          All
+          <span className="ml-1.5 tabular-nums opacity-70">
+            ({projectsByIndustry(null).length})
+          </span>
+        </button>
+        {industriesWithProjects().map((ind) => {
+          const count = projectCountForIndustry(ind.id);
+          const active = activeIndustryId === ind.id;
+          return (
+            <button
+              key={ind.id}
+              type="button"
+              onClick={() => onSelect(ind.id)}
+              aria-pressed={active}
+              className={cn(
+                "shrink-0 rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider transition",
+                active
+                  ? "border-primary bg-primary/15 text-primary"
+                  : "border-border/60 bg-background/40 text-muted-foreground hover:border-primary/40 hover:text-foreground",
+              )}
+            >
+              {ind.name}
+              <span className="ml-1.5 tabular-nums opacity-70">({count})</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
