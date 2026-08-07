@@ -175,6 +175,8 @@ export const experiences: Experience[] = [
       "Django",
       "FastAPI",
       "Flask",
+      "Express.js",
+      "Node.js",
       "React",
       "Next.js",
       "React Native",
