@@ -1,19 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Sora, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Manrope, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { profile } from "@/lib/data";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-jakarta",
   display: "swap",
 });
 
-const sora = Sora({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-sora",
+  variable: "--font-manrope",
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -76,8 +76,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#06121f" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f8fa" },
+    { media: "(prefers-color-scheme: dark)", color: "#070d14" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -129,7 +129,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sora.variable} ${jetbrainsMono.variable}`}
+      className={`${jakarta.variable} ${manrope.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <body

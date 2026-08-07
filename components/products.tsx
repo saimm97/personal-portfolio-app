@@ -48,20 +48,20 @@ function StatusBadge({ status }: { status: Product["status"] }) {
 function ProductCard({ p, index }: { p: Product; index: number }) {
   const CardInner = (
     <>
-      <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-primary/10 opacity-0 blur-3xl transition group-hover:opacity-100" />
-
       <div className="relative z-[1] flex min-h-0 flex-1 flex-col">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="rounded-full border border-border/60 bg-background/40 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
             {p.category}
           </span>
           <StatusBadge status={p.status} />
         </div>
 
-        <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight">
+        <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
           {p.name}
         </h3>
-        <p className="mt-1.5 text-sm font-medium text-primary/90">{p.tagline}</p>
+        <p className="mt-1.5 text-sm font-medium text-foreground/90">
+          {p.tagline}
+        </p>
 
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {p.description}
@@ -84,7 +84,7 @@ function ProductCard({ p, index }: { p: Product; index: number }) {
             {p.stack.map((s) => (
               <span
                 key={s}
-                className="rounded-md border border-border/60 bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
+                className="rounded-md border border-border/50 bg-background/40 px-2 py-0.5 font-mono text-[11px] text-muted-foreground"
               >
                 {s}
               </span>
@@ -103,7 +103,7 @@ function ProductCard({ p, index }: { p: Product; index: number }) {
   );
 
   const className =
-    "group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/40 hover:bg-card/60 md:p-8";
+    "group relative flex h-full flex-col overflow-hidden border-t border-border/70 pt-6 transition md:pt-8";
 
   return (
     <motion.article
@@ -137,9 +137,9 @@ export function Products() {
       id="products"
       eyebrow="Products"
       title={<>Products I&apos;ve helped ship</>}
-      description="Live, in-market products I've built and scaled — from enterprise localization platforms to developer communities and ML-driven marketplaces."
+      description="Venture and production products I've built and shipped — from zero-to-launch health and fintech apps to LLM career tooling and enterprise claims platforms."
     >
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-10 border-t border-border/50 pt-2 md:grid-cols-2 md:gap-x-12 md:gap-y-14">
         {products.map((p, i) => (
           <ProductCard key={p.name} p={p} index={i} />
         ))}

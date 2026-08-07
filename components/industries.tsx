@@ -13,12 +13,13 @@ export function Industries() {
       eyebrow="Industries"
       title={
         <>
-          Shipped across <span className="text-primary">{industries.length}</span> industries
+          Shipped across{" "}
+          <span className="text-primary">{industries.length}</span> industries
         </>
       }
-      description="Domain context shapes good engineering. Here are the industries where I've delivered production systems, navigated compliance, and partnered with non-technical stakeholders."
+      description="Domain context shapes good engineering — production systems, compliance, and non-technical stakeholders."
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-x-8 gap-y-10 border-t border-border/60 pt-10 sm:grid-cols-2 lg:grid-cols-4">
         {industries.map((industry, i) => {
           const Icon = industry.icon;
           const projectCount = projectCountForIndustry(industry.id);
@@ -30,13 +31,12 @@ export function Industries() {
               viewport={{ once: true, margin: "-60px" }}
               variants={fadeUp}
               transition={{ delay: (i % 4) * 0.05 }}
-              className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/40 hover:bg-card/60"
+              className="group flex h-full flex-col"
             >
-              <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-primary/0 via-primary/0 to-primary/10 opacity-0 transition group-hover:opacity-100" />
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-border/60 bg-background/60 text-primary transition group-hover:border-primary/40 group-hover:text-primary">
-                <Icon size={20} />
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border/60 bg-background/60 text-primary transition group-hover:border-primary/40">
+                <Icon size={18} />
               </div>
-              <h3 className="mt-4 font-display text-lg font-semibold">
+              <h3 className="mt-4 font-display text-lg font-semibold tracking-tight">
                 {industry.name}
               </h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
@@ -68,7 +68,7 @@ export function Industries() {
                 </Link>
               ) : (
                 <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
-                  Projects coming soon
+                  Via experience
                 </p>
               )}
             </motion.div>

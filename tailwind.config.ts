@@ -21,8 +21,8 @@ const config: Config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        display: ["var(--font-sora)", "system-ui", "sans-serif"],
+        sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        display: ["var(--font-manrope)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "ui-monospace", "monospace"],
       },
       colors: {
@@ -37,12 +37,13 @@ const config: Config = {
         "card-foreground": "hsl(var(--card-foreground))",
         primary: "hsl(var(--primary))",
         "primary-foreground": "hsl(var(--primary-foreground))",
+        surface: "hsl(var(--surface))",
       },
       backgroundImage: {
         "grid-pattern":
           "linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px)",
         "radial-fade":
-          "radial-gradient(ellipse at top, hsl(var(--primary) / 0.15), transparent 60%)",
+          "radial-gradient(ellipse at top, hsl(var(--primary) / 0.18), transparent 60%)",
       },
       keyframes: {
         "fade-in": {
@@ -57,12 +58,18 @@ const config: Config = {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.6s ease-out forwards",
-        shimmer: "shimmer 3s linear infinite",
+        shimmer: "shimmer 4s linear infinite",
         marquee: "marquee 40s linear infinite",
+        float: "float 7s ease-in-out infinite",
       },
+
     },
   },
   plugins: [],

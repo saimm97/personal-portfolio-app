@@ -19,9 +19,9 @@ export function Contact() {
         whileInView="show"
         viewport={{ once: true, margin: "-60px" }}
         variants={fadeUp}
-        className="relative overflow-hidden rounded-2xl border border-border/60 bg-card/40 p-6 md:p-10"
+        className="relative overflow-hidden rounded-2xl border border-border/50 bg-surface/80 p-6 md:p-10"
       >
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-radial-fade opacity-70" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-mesh opacity-60" />
         <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
 
         <div className="grid gap-10 lg:grid-cols-5 lg:items-start">

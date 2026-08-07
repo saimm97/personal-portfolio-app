@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="border-t border-border/60 bg-background/60">
       <div className="container flex flex-col items-center justify-between gap-4 py-8 text-sm text-muted-foreground md:flex-row">
         <p>
-          © {year} {profile.name}. Built with Next.js & Tailwind CSS.
+          © {year} {profile.name}.
         </p>
         <div className="flex items-center gap-3">
           {socialLinks.slice(0, 3).map((s) => {

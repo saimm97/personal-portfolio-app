@@ -8,11 +8,12 @@ export function Skills() {
   return (
     <Section
       id="skills"
+      tone="muted"
       eyebrow="Toolbox"
       title={<>The stack I reach for</>}
-      description="Tools I've used to ship and scale production systems. I'm language-agnostic at heart — I pick the right tool for the team, the timeline, and the problem."
+      description="Tools I've used to ship and scale production systems — picked for the team, the timeline, and the problem."
     >
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="space-y-10">
         {skillGroups.map((group, i) => (
           <motion.div
             key={group.title}
@@ -20,17 +21,17 @@ export function Skills() {
             whileInView="show"
             viewport={{ once: true, margin: "-60px" }}
             variants={fadeUp}
-            transition={{ delay: (i % 3) * 0.05 }}
-            className="rounded-xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/40"
+            transition={{ delay: (i % 4) * 0.04 }}
+            className="grid gap-4 border-t border-border/60 pt-6 md:grid-cols-[minmax(0,220px)_1fr] md:gap-10"
           >
-            <p className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary">
               {group.title}
             </p>
-            <ul className="mt-4 flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-2">
               {group.items.map((item) => (
                 <li
                   key={item}
-                  className="rounded-md border border-border/60 bg-background/40 px-2.5 py-1 text-xs text-foreground/90"
+                  className="rounded-md border border-border/50 bg-background/70 px-3 py-1.5 text-sm text-foreground/90 transition hover:border-primary/40 hover:text-foreground"
                 >
                   {item}
                 </li>

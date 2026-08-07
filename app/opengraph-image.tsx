@@ -16,8 +16,8 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           background:
-            "linear-gradient(135deg, #050d1a 0%, #06121f 40%, #082435 100%)",
-          color: "#e2e8f0",
+            "linear-gradient(135deg, #070d14 0%, #0a1520 40%, #0c1f24 100%)",
+          color: "#f4f1ea",
           fontFamily: "system-ui, -apple-system, sans-serif",
           padding: 72,
           position: "relative",
@@ -33,7 +33,7 @@ export default function OpengraphImage() {
             height: 600,
             borderRadius: "50%",
             background:
-              "radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%)",
+              "radial-gradient(circle, rgba(34,196,164,0.28) 0%, transparent 70%)",
             display: "flex",
           }}
         />
@@ -99,7 +99,7 @@ export default function OpengraphImage() {
               fontWeight: 700,
               letterSpacing: "-0.03em",
               backgroundImage:
-                "linear-gradient(135deg, #f8fafc 0%, #38bdf8 60%, #f8fafc 100%)",
+                "linear-gradient(135deg, #f4f1ea 0%, #22c4a4 60%, #f4f1ea 100%)",
               backgroundClip: "text",
               color: "transparent",
               display: "flex",
